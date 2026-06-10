@@ -1,35 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buscador de Usuarios</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f7fb;
+        min-height: 100vh;
+        padding: 40px 20px;
+        color: #333;
       }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #1e293b;
+      }
+
+      .search-box {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
       input {
-        padding: 8px;
-        width: 300px;
+        flex: 1;
+        min-width: 250px;
+        padding: 12px;
+        border: 2px solid #dbe3ec;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: 0.3s;
       }
+
+      input:focus {
+        outline: none;
+        border-color: #2563eb;
+      }
+
       button {
-        padding: 8px 12px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 22px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
       }
-      .user,
-      .post,
-      .comment {
-        margin-top: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+
+      button:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
       }
+
+      #result {
+        margin-top: 20px;
+      }
+
+      .user {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .user h2 {
+        color: #1e40af;
+        margin-bottom: 8px;
+      }
+
       .post {
-        margin-left: 20px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0 15px 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       }
+
+      .post h3 {
+        color: #334155;
+        margin-bottom: 10px;
+      }
+
       .comment {
-        margin-left: 40px;
-        background-color: #f9f9f9;
+        background: #f8fafc;
+        border-left: 4px solid #94a3b8;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 10px 0 10px 20px;
+      }
+
+      .comment strong {
+        color: #475569;
+      }
+
+      @media (max-width: 768px) {
+        .search-box {
+          flex-direction: column;
+        }
+
+        button {
+          width: 100%;
+        }
+
+        .post {
+          margin-left: 0;
+        }
+
+        .comment {
+          margin-left: 10px;
+        }
       }
     </style>
   </head>
