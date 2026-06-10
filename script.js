@@ -1,7 +1,16 @@
+// Ejemplo practico
+
+// Vamos a buscar un usuario, sus posts y sus comentarios
+// Notar que para buscar los post necesito primero saber el id del usuario
+// Algo parecido pasa con los comentarios
+
+// Obtenemos los elementos de HTML 
 const searchBtn = document.getElementById("searchBtn");
 const usernameInput = document.getElementById("usernameInput");
 const resultDiv = document.getElementById("result");
 
+// Declaramos cada una de las funciones asincronas que consumen el API
+// https://jsonplaceholder.typicode.com/
 async function getUser(username) {
   const response = await fetch(
     "https://jsonplaceholder.typicode.com/users?username=" + username
@@ -23,21 +32,28 @@ async function getcommentsByPost(postId) {
   return response.json();
 }
 
+// En este caso vamos a usar async / await
 async function searchUser() {
+  // Obtenemos el input del usuario
   const username = usernameInput.value.trim();
+  // Limpiamos el resultado anterior
   resultDiv.innerHTML = "";
 
+  //En caso de que no haya un username ponemos un alert
   if (!username) return alert("no hay usuario");
 
+  // usamos try/catch para casos de error en las peticiones
   try {
+    //Comenzamos a llamar las peticiones
     const users = await getUser(username);
-
     console.log(users);
 
+    // Obtenemos el primer usuario
     const user = users[0];
-
+    //En caso de que no se encuentre el usuario mostramos un alert
     if (!user) return alert("usuario no encontrado");
 
+    // En caso de que si lo encuentre inyectamos los datos en el HTML
     const userDiv = document.createElement("div");
     userDiv.classList.add("user");
     userDiv.innerHTML = `<h2>${user.name} (${user.username})</h2>
@@ -49,6 +65,7 @@ async function searchUser() {
 
     resultDiv.appendChild(userDiv);
 
+    // Realizamos un proceso parecido con las otras peticiones
     const posts = await getPostByUser(user.id);
 
     for (const post of posts) {
@@ -76,4 +93,5 @@ async function searchUser() {
   }
 }
 
+// Cuando se genera el click realizamos las consultas
 searchBtn.addEventListener("click", searchUser);

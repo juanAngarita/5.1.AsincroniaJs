@@ -1,3 +1,6 @@
+// Alternativa a como reaccionar a los promises
+// Tenemos las mismas peticions que en promises
+
 function getUser3() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -34,8 +37,13 @@ function getCommentsByPost3(postId) {
   });
 }
 
+// La diferencia es como reaccionamos para resolver o rechazar la promesa
+// es necesario poner el async si dentro de nuestra funcion usamos el await
 async function main() {
+  // Para el manejo de errores usamos el try catch
   try {
+    // Usamos await para esperar a que la promesa se resuelva
+    // Parece que ejecutamos codigo sincrono, pero en realidad es asincrono
     const user = await getUser3();
     console.log("id del usuario", user.id);
 

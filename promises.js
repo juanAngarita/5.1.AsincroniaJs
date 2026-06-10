@@ -1,3 +1,9 @@
+// Alternativa a callbacks
+
+// Las promesas son los objetos que retornan normalmente las funciones asincronas
+// Las promesas siempre tienen 2 parametros: resolve y reject
+// Resolve se ejecuta cuando la promesa se resuelve
+
 function getUser3() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -33,6 +39,14 @@ function getCommentsByPost3(postId) {
     }, 3000);
   });
 }
+
+// Usamos una diferente sintaxis
+// no tenemos el callback hell
+// Hacemos el .then y el .catch
+// .then se ejecuta cuando la promesa se resuelve
+// .catch se ejecuta cuando la promesa se rechaza
+
+// Notar que es un codigo mucho mas legible
 
 getUser3()
   .then((user) => {
