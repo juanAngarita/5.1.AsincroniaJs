@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de Usuarios</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      input {
+        padding: 8px;
+        width: 300px;
+      }
+      button {
+        padding: 8px 12px;
+      }
+      .user,
+      .post,
+      .comment {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .post {
+        margin-left: 20px;
+      }
+      .comment {
+        margin-left: 40px;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Buscador de Usuarios</h1>
+    <input type="text" id="usernameInput" placeholder="Escribe el username" />
+    <button id="searchBtn">Buscar</button>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
